@@ -1,11 +1,20 @@
-# Universal E-Commerce Product, Price & Stock Scraper
+# Universal E-Commerce Product, Variant, Stock & Price Scraper
 
-High-speed, zero-browser-overhead Apify Actor that extracts normalized product intelligence (**Title, Brand, SKU, Price, Currency, In-Stock Availability, Aggregate Rating, Review Count, Images, and Variants**) from **Shopify, WooCommerce, Magento, BigCommerce, and custom e-commerce storefronts**.
+Multi-platform e-commerce intelligence engine for Shopify, WooCommerce, Magento, BigCommerce & Schema.org stores. Extracts full SKU variants, real-time stock status, compare-at discounts, GTIN/MPN, ratings, and category listings.
 
-## Features
-- **3-Layer Extraction Engine**:
-  1. `application/ld+json` (`@type: Product` & `@type: AggregateOffer` / `Offer`)
-  2. Shopify `.json` product endpoint & `meta[property^="og:"]` / `product:price:amount` OpenGraph fallback
-  3. Schema.org Microdata (`itemprop="price"`, `itemprop="availability"`)
-- **Pay-Per-Event Pricing**: `$0.003` per normalized product (`product-scraped`), with zero charge on failed or non-product URLs.
-- **AI Agent & MCP Ready**: Outputs deterministic JSON schemas ready for price-monitoring pipelines, competitor intelligence agents, and RAG product catalogs.
+## Why Use Universal E-Commerce Product, Variant, Stock & Price Scraper?
+- **Production-Grade & Zero Maintenance**: Built specifically for automated workflows in **n8n, Make.com, Zapier, Clay, LangChain, and MCP servers**.
+- **Pay-Per-Event (PPE) Transparent Pricing**: Only **$0.003 per enriched result** (`$3.00 per 1,000 results`) with structured JSON, CSV, and Excel export.
+- **Fast & Lightweight**: Uses high-concurrency HTTP parsing and structured JSON-LD / API discovery without expensive headless browser overhead.
+
+## Key Features
+1. **Deep Structured Extraction**: Automatically normalizes every output record against a strict dataset schema.
+2. **Plug-and-Play API & Webhook Integration**: Call directly via `POST https://api.apify.com/v2/acts/huynguyen-data-cloud~ecommerce-product-price-scraper/run-sync-get-dataset-items`.
+3. **Built-in Data Hygiene**: Deduplicates records, filters false positives, and computes actionable scoring metrics.
+
+## Quick Start (cURL / API)
+```bash
+curl -X POST "https://api.apify.com/v2/acts/huynguyen-data-cloud~ecommerce-product-price-scraper/run-sync-get-dataset-items?token=YOUR_APIFY_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"startUrls": [{"url": "https://webscraper.io/test-sites/e-commerce/allinone"}], "tryShopifyJsonApi": true}'
+```
