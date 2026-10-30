@@ -1,0 +1,18 @@
+{
+  "name": "universal-ecommerce-product-scraper",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Universal E-Commerce Product, Price & Stock Scraper (Pay-per-Event Apify Actor)",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "apify": "^3.2.0",
+    "crawlee": "^3.11.0",
+    "cheerio": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
