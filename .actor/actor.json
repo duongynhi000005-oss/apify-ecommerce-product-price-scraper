@@ -1,0 +1,12 @@
+{
+  "actorSpecification": 1,
+  "name": "universal-ecommerce-product-scraper",
+  "title": "Universal E-Commerce Product, Price & Stock Scraper (JSON-LD + OpenGraph)",
+  "description": "Extracts normalized product data (title, SKU, brand, price, currency, availability, rating, review count, images, and variants) from Shopify, WooCommerce, Magento, BigCommerce, and custom e-commerce stores using Schema.org Product JSON-LD, OpenGraph, and Microdata.",
+  "version": "1.0",
+  "meta": {
+    "templateId": "js-crawlee-cheerio"
+  },
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile"
+}
