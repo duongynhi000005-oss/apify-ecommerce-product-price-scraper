@@ -1,0 +1,25 @@
+{
+  "title": "Universal E-Commerce Product Scraper Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "startUrls": {
+      "title": "Product or Category URLs",
+      "type": "array",
+      "description": "List of e-commerce product or collection URLs to extract structured pricing and stock data from.",
+      "editor": "requestListSources",
+      "prefill": [
+        { "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html" }
+      ]
+    },
+    "maxConcurrency": {
+      "title": "Max Concurrency",
+      "type": "integer",
+      "description": "Maximum number of pages processed in parallel.",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 50
+    }
+  },
+  "required": ["startUrls"]
+}
