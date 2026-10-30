@@ -131,9 +131,8 @@ for (const item of startUrls) {
     const domPriceMatch = domPriceText.match(/(\d+[.,]?\d*)/);
     const fallbackPrice = domPriceMatch ? Number(domPriceMatch[1].replace(',', '')) : null;
 
-    const primaryPrice = variants[0]?.price
-        ?? Number($('meta[property="product:price:amount"]').attr('content') || NaN)
-        || fallbackPrice;
+    const metaPrice = Number($('meta[property="product:price:amount"]').attr('content') || NaN);
+    const primaryPrice = variants[0]?.price ?? (Number.isFinite(metaPrice) ? metaPrice : fallbackPrice);
     const currency = variants[0]?.currency
         || $('meta[property="product:price:currency"]').attr('content')
         || (domPriceText.includes('€') ? 'EUR' : domPriceText.includes('£') ? 'GBP' : 'USD');
