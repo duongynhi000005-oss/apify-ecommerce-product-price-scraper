@@ -1,0 +1,29 @@
+{
+  "title": "Universal E-Commerce Product & Variant Scraper Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "startUrls": {
+      "title": "Product or Category URLs",
+      "type": "array",
+      "description": "Product or store category URLs (Shopify, WooCommerce, Magento, or any Schema.org store).",
+      "editor": "requestListSources",
+      "default": [
+        {
+          "url": "https://webscraper.io/test-sites/e-commerce/allinone"
+        }
+      ],
+      "prefill": [
+        {
+          "url": "https://webscraper.io/test-sites/e-commerce/allinone"
+        }
+      ]
+    },
+    "tryShopifyJsonApi": {
+      "title": "Use Native Shopify JSON Variant API When Available",
+      "type": "boolean",
+      "description": "Automatically fetch full variant/SKU inventory matrices on Shopify product URLs.",
+      "default": true
+    }
+  }
+}
