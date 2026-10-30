@@ -1,21 +1,23 @@
 {
   "actorSpecification": 1,
-  "name": "universal-ecommerce-product-scraper",
-  "title": "Universal E-Commerce Product, Price & Stock Scraper (JSON-LD + OpenGraph)",
-  "description": "Extracts normalized product data (title, SKU, brand, price, currency, availability, rating, review count, images, and variants) from Shopify, WooCommerce, Magento, BigCommerce, and custom e-commerce stores using Schema.org Product JSON-LD, OpenGraph, and Microdata.",
+  "name": "ecommerce-product-price-scraper",
+  "title": "Universal E-Commerce Product, Variant, Stock & Price Scraper",
+  "description": "Multi-platform e-commerce intelligence engine for Shopify, WooCommerce, Magento, BigCommerce & Schema.org stores. Extracts full SKU variants, real-time stock status, compare-at discounts, GTIN/MPN, ratings, and category listings.",
   "version": "1.0",
   "meta": {
-    "templateId": "js-crawlee-cheerio"
+    "templateId": "js-start"
   },
   "input": "./input_schema.json",
   "dockerfile": "./Dockerfile",
   "output": {
     "actorOutputSchemaVersion": 1,
-    "title": "Extracted E-Commerce Products Output",
+    "title": "Universal E-Commerce Product, Variant, Stock & Price Scraper Output",
+    "description": "Multi-platform e-commerce intelligence engine for Shopify, WooCommerce, Magento, BigCommerce & Schema.org stores. Extracts full SKU variants, real-time stock status, compare-at discounts, GTIN/MPN, ratings, and category listings.",
+    "type": "object",
     "properties": {
-      "dataset": {
+      "results": {
         "type": "string",
-        "title": "Extracted E-Commerce Products",
+        "title": "Enriched Dataset Items",
         "template": "{{links.apiDefaultDatasetUrl}}/items"
       }
     }
@@ -23,56 +25,94 @@
   "storages": {
     "dataset": {
       "actorSpecification": 1,
+      "title": "Universal E-Commerce Product, Variant, Stock & Price Scraper Dataset",
+      "description": "Multi-platform e-commerce intelligence engine for Shopify, WooCommerce, Magento, BigCommerce & Schema.org stores. Extracts full SKU variants, real-time stock status, compare-at discounts, GTIN/MPN, ratings, and category listings.",
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "url",
+              "platform",
+              "title",
+              "price",
+              "currency",
+              "inStock",
+              "variantsCount"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "url": {
+                "label": "Product URL",
+                "format": "text"
+              },
+              "platform": {
+                "label": "Platform",
+                "format": "text"
+              },
+              "title": {
+                "label": "Product Title",
+                "format": "text"
+              },
+              "price": {
+                "label": "Price",
+                "format": "text"
+              },
+              "currency": {
+                "label": "Currency",
+                "format": "text"
+              },
+              "inStock": {
+                "label": "In Stock",
+                "format": "text"
+              },
+              "variantsCount": {
+                "label": "Variants Count",
+                "format": "text"
+              }
+            }
+          }
+        }
+      },
       "fields": {
         "type": "object",
         "properties": {
           "url": {
             "type": "string",
-            "title": "url"
+            "title": "Product URL",
+            "description": "Product URL"
+          },
+          "platform": {
+            "type": "string",
+            "title": "Platform",
+            "description": "Platform"
           },
           "title": {
             "type": "string",
-            "title": "title"
+            "title": "Product Title",
+            "description": "Product Title"
           },
           "price": {
-            "type": "string",
-            "title": "price"
+            "type": "number",
+            "title": "Price",
+            "description": "Price"
           },
           "currency": {
             "type": "string",
-            "title": "currency"
+            "title": "Currency",
+            "description": "Currency"
           },
-          "availability": {
-            "type": "string",
-            "title": "availability"
+          "inStock": {
+            "type": "boolean",
+            "title": "In Stock",
+            "description": "In Stock"
           },
-          "brand": {
-            "type": "string",
-            "title": "brand"
-          },
-          "sku": {
-            "type": "string",
-            "title": "sku"
-          }
-        }
-      },
-      "views": {
-        "overview": {
-          "title": "Extracted E-Commerce Products",
-          "transformation": {
-            "fields": [
-              "url",
-              "title",
-              "price",
-              "currency",
-              "availability",
-              "brand",
-              "sku"
-            ]
-          },
-          "display": {
-            "component": "table",
-            "properties": {}
+          "variantsCount": {
+            "type": "integer",
+            "title": "Variants Count",
+            "description": "Variants Count"
           }
         }
       }
