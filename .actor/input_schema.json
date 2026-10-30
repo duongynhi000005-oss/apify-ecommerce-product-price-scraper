@@ -1,25 +1,29 @@
 {
-  "title": "Universal E-Commerce Product Scraper Input",
+  "title": "Universal E-Commerce Product & Variant Scraper Input",
   "type": "object",
   "schemaVersion": 1,
   "properties": {
     "startUrls": {
       "title": "Product or Category URLs",
       "type": "array",
-      "description": "List of e-commerce product or collection URLs to extract structured pricing and stock data from.",
+      "description": "Product or store category URLs (Shopify, WooCommerce, Magento, or any Schema.org store).",
       "editor": "requestListSources",
+      "default": [
+        {
+          "url": "https://webscraper.io/test-sites/e-commerce/allinone"
+        }
+      ],
       "prefill": [
-        { "url": "https://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html" }
+        {
+          "url": "https://webscraper.io/test-sites/e-commerce/allinone"
+        }
       ]
     },
-    "maxConcurrency": {
-      "title": "Max Concurrency",
-      "type": "integer",
-      "description": "Maximum number of pages processed in parallel.",
-      "default": 10,
-      "minimum": 1,
-      "maximum": 50
+    "tryShopifyJsonApi": {
+      "title": "Use Native Shopify JSON Variant API When Available",
+      "type": "boolean",
+      "description": "Automatically fetch full variant/SKU inventory matrices on Shopify product URLs.",
+      "default": true
     }
-  },
-  "required": ["startUrls"]
+  }
 }
