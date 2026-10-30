@@ -8,5 +8,74 @@
     "templateId": "js-crawlee-cheerio"
   },
   "input": "./input_schema.json",
-  "dockerfile": "./Dockerfile"
+  "dockerfile": "./Dockerfile",
+  "output": {
+    "actorOutputSchemaVersion": 1,
+    "title": "Extracted E-Commerce Products Output",
+    "properties": {
+      "dataset": {
+        "type": "string",
+        "title": "Extracted E-Commerce Products",
+        "template": "{{links.apiDefaultDatasetUrl}}/items"
+      }
+    }
+  },
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "fields": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "url"
+          },
+          "title": {
+            "type": "string",
+            "title": "title"
+          },
+          "price": {
+            "type": "string",
+            "title": "price"
+          },
+          "currency": {
+            "type": "string",
+            "title": "currency"
+          },
+          "availability": {
+            "type": "string",
+            "title": "availability"
+          },
+          "brand": {
+            "type": "string",
+            "title": "brand"
+          },
+          "sku": {
+            "type": "string",
+            "title": "sku"
+          }
+        }
+      },
+      "views": {
+        "overview": {
+          "title": "Extracted E-Commerce Products",
+          "transformation": {
+            "fields": [
+              "url",
+              "title",
+              "price",
+              "currency",
+              "availability",
+              "brand",
+              "sku"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {}
+          }
+        }
+      }
+    }
+  }
 }
