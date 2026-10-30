@@ -1,18 +1,14 @@
 {
-  "name": "universal-ecommerce-product-scraper",
+  "name": "ecommerce-product-price-scraper",
   "version": "1.0.0",
   "type": "module",
-  "description": "Universal E-Commerce Product, Price & Stock Scraper (Pay-per-Event Apify Actor)",
+  "description": "Multi-platform e-commerce intelligence engine for Shopify, WooCommerce, Magento, BigCommerce & Schema.org stores. Extracts full SKU variants, real-time stock status, compare-at discounts, GTIN/MPN, ratings, and category listings.",
   "main": "src/main.js",
   "scripts": {
     "start": "node src/main.js"
   },
   "dependencies": {
     "apify": "^3.2.0",
-    "crawlee": "^3.11.0",
     "cheerio": "^1.0.0"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   }
 }
