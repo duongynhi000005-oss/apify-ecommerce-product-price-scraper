@@ -1,0 +1,9 @@
+{
+  "actorChargeEvents": {
+    "product-extracted": {
+      "eventTitle": "Product Extracted & Structured",
+      "eventDescription": "Charged when an e-commerce product page is crawled and successfully parsed with price, availability, or images.",
+      "eventPriceUsd": 0.003
+    }
+  }
+}
